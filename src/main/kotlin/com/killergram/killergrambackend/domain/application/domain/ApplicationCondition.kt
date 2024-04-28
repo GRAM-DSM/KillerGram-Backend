@@ -7,7 +7,7 @@ import jakarta.persistence.FetchType.LAZY
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 
-@Entity(name = "tbl_application")
+@Entity(name = "tbl_application_condition")
 class ApplicationCondition(
     student: Student,
     sportApplication: SportApplication

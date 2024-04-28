@@ -11,7 +11,7 @@ import java.util.Date
 
 @Entity(name = "tbl_sport_application")
 class SportApplication(
-    @Column(columnDefinition = "DATE(8)", nullable = false)
+    @Column(columnDefinition = "DATE", nullable = false)
     val date: Date,
 
     sport: Sport,
