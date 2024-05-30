@@ -4,7 +4,7 @@ import com.killergram.killergrambackend.domain.user.controller.dto.request.Stude
 import com.killergram.killergrambackend.domain.user.domain.Student
 import com.killergram.killergrambackend.domain.user.domain.User
 import com.killergram.killergrambackend.domain.user.domain.type.Authority
-import com.killergram.killergrambackend.domain.user.exception.UserAlreadyExistsException
+import com.killergram.killergrambackend.domain.user.facade.UserFacade
 import com.killergram.killergrambackend.domain.user.repository.StudentJpaRepository
 import com.killergram.killergrambackend.domain.user.repository.UserJpaRepository
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -15,16 +15,12 @@ import org.springframework.transaction.annotation.Transactional
 class StudentSignUpService(
     private val userJpaRepository: UserJpaRepository,
     private val studentJpaRepository: StudentJpaRepository,
+    private val userFacade: UserFacade,
     private val passwordEncoder: PasswordEncoder,
 ) {
     @Transactional
     fun execute(request: StudentSignUpRequest) {
-        if (userJpaRepository.findByAccountId(request.accountId) != null) {
-            throw UserAlreadyExistsException
-        }
-        if (studentJpaRepository.findBySchoolNumber(request.schoolNumber) != null) {
-            throw UserAlreadyExistsException
-        }
+        userFacade.checkStudentExists(request.accountId, request.schoolNumber)
 
         request.run {
             val user = userJpaRepository.save(
