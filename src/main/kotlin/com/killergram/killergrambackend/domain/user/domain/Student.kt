@@ -14,7 +14,7 @@ import jakarta.persistence.OneToOne
 
 @Entity(name = "tbl_student")
 class Student(
-    @Column(columnDefinition = "VARCHAR(30)", nullable = false, unique = true)
+    @Column(columnDefinition = "VARCHAR(30)", nullable = false)
     val name: String,
 
     @Column(columnDefinition = "CHAR(4)", nullable = false, unique = true)
