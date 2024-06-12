@@ -28,6 +28,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("io.jsonwebtoken:jjwt:0.9.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     runtimeOnly("com.mysql:mysql-connector-j")
 }
