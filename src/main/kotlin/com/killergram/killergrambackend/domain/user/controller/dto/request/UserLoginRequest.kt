@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Pattern
 import jakarta.validation.constraints.Size
 
-data class LoginRequest(
+data class UserLoginRequest(
     @field:NotBlank
     @Size(max = 30)
     val accountId: String,
