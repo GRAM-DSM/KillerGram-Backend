@@ -1,6 +1,8 @@
 package com.killergram.killergrambackend.domain.user.facade
 
+import com.killergram.killergrambackend.domain.user.domain.User
 import com.killergram.killergrambackend.domain.user.exception.UserAlreadyExistsException
+import com.killergram.killergrambackend.domain.user.exception.UserNotFoundException
 import com.killergram.killergrambackend.domain.user.repository.StudentJpaRepository
 import com.killergram.killergrambackend.domain.user.repository.UserJpaRepository
 import org.springframework.stereotype.Component
@@ -18,5 +20,9 @@ class UserFacade(
         if (studentJpaRepository.findBySchoolNumber(schoolNumber) != null) {
             throw UserAlreadyExistsException
         }
+    }
+
+    fun getByUser(accountId: String): User {
+        return userJpaRepository.findByAccountId(accountId) ?: throw UserNotFoundException
     }
 }
